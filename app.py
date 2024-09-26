@@ -1,12 +1,12 @@
 from flask import Flask, request, jsonify, render_template
-import os
+#import os
 import numpy as np
 from PIL import Image
 import keras
 import requests
-import gdown
+#import gdown
 
-os.environ['TF_ENABLE_ONEDNN_OPTS'] = '0'
+#os.environ['TF_ENABLE_ONEDNN_OPTS'] = '0'
 
 
 
@@ -17,28 +17,27 @@ def normalization1(array):
 
 
 
-def download_keras_model_from_drive(drive_url, output_path):
-    gdown.download(drive_url, output_path, quiet=False)
+#def download_keras_model_from_drive(drive_url, output_path):
+    #gdown.download(drive_url, output_path, quiet=False)
 
 # Example usage
 url = "https://drive.google.com/uc?id=1EuonbsCgLzPqiiIfJ-xIQBuETxV6EgmR"  # Replace with your actual URL
 output_path = "my_model.keras"
 #https://drive.google.com/file/d/1EuonbsCgLzPqiiIfJ-xIQBuETxV6EgmR/view?usp=sharing
-download_keras_model_from_drive(url, output_path)
+#download_keras_model_from_drive(url, output_path)
 
 
 # Check if file exists
-if os.path.exists(output_path):
-    print(f"File exists: {output_path}")
-else:
-    print(f"File not found at {output_path}")
+##    print(f"File exists: {output_path}")
+#else:
+#    print(f"File not found at {output_path}")
 
 # Verify file size or integrity
-file_size = os.path.getsize(output_path)
-print(f"Downloaded file size: {file_size} bytes")
+#file_size = os.path.getsize(output_path)
+#print(f"Downloaded file size: {file_size} bytes")
 
 # Load your Keras model
-model = keras.models.load_model(output_path)
+#model = keras.models.load_model(output_path)
 
 app = Flask(__name__)
 @app.route('/')
@@ -59,7 +58,7 @@ def upload_image():
     try:
         image = Image.open(file)
 
-        image.show()
+        #image.show()
         new_img = image.resize((256, 256))
         image_array = [np.array(new_img)]
         inputs = np.array(image_array)
@@ -70,10 +69,10 @@ def upload_image():
 
         inputsNormalised = normalization1(inputs_reshaped)
 
-        predicted1 = model.predict(inputsNormalised)
+        #predicted1 = model.predict(inputsNormalised)
 
-        max_index = np.argmax(predicted1[0])
-
+        #max_index = np.argmax(predicted1[0])
+        max_index=1;
         if (max_index == 0):
             result='T4'
         if (max_index == 1):
