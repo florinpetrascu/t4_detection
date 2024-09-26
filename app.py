@@ -2,8 +2,8 @@ from flask import Flask, request, jsonify, render_template
 #import os
 import numpy as np
 from PIL import Image
-import keras
-import requests
+#import keras
+#import requests
 #import gdown
 
 #os.environ['TF_ENABLE_ONEDNN_OPTS'] = '0'

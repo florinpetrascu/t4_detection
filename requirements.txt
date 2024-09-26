@@ -1,7 +1,4 @@
 Flask
 numpy
 Pillow
-tensorflow
-keras
-gdown
-requests
+
